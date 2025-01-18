@@ -1,0 +1,54 @@
+//
+//  InitialView.swift
+//  VideoSDK-ILS-iOS-Example
+//
+//  Created by Deep Bhupatkar on 18/01/25.
+//
+
+import SwiftUI
+
+struct InitialView: View {
+    var body: some View {
+        NavigationStack {
+            // Buttons Stack
+            VStack(spacing: 16) {
+                Text("VideoSDK")
+                    .font(.largeTitle)
+                    .fontWeight(.bold)
+                    .foregroundColor(.white)
+                    
+                
+                Text("Interactive Live Streaming Example")
+                    .font(.title)
+                    .fontWeight(.medium)
+                    .foregroundColor(.gray)
+                    .multilineTextAlignment(.center)
+                    .padding()
+
+                VStack(spacing: 16) {
+                    NavigationLink(destination: JoinLiveStreamView(meetingId: "ryi4-osk6-auwe", name: "John Doe", role: "Create Room" )) {
+                        ActionButtonn(title: "Create Meeting", icon: "person.fill")
+                    }
+                    
+                    Text("---- OR ----")
+                        .fontWeight(.medium)
+                        .foregroundColor(.white)
+                    
+                    NavigationLink(destination: JoinLiveStreamView(meetingId: "ryi4-osk6-auwe", name: "Host User", role: "Host")) {
+                        ActionButtonn(title: "Join as Host", icon: "person.fill")
+                    }
+                    
+                    NavigationLink(destination: JoinLiveStreamView(meetingId: "ryi4-osk6-auwe", name: "Audience User", role: "Audience")) {
+                        ActionButtonn(title: "Join as Audience", icon: "person.fill")
+                    }
+                }
+            }
+            .navigationBarBackButtonHidden(false)
+        }
+        .padding(.horizontal)
+    }
+}
+
+#Preview {
+    InitialView()
+}
