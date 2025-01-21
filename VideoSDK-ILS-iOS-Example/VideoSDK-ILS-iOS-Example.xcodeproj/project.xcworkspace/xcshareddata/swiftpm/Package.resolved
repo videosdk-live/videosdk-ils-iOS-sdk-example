@@ -1,5 +1,5 @@
 {
-  "originHash" : "f8d611217fea323b49fc588b81d2621d4167fe974b8dc236f8b2096160a60d1e",
+  "originHash" : "861bbe2bcefc01902daf508f64a203e5714eea006c79734c1a04a8fe366ee03b",
   "pins" : [
     {
       "identity" : "emojipicker",
@@ -43,7 +43,7 @@
       "location" : "https://github.com/videosdk-live/videosdk-rtc-ios-spm",
       "state" : {
         "branch" : "main",
-        "revision" : "43c360e7395f5879da5c5b499591f8153ecfadb7"
+        "revision" : "e53accfdd8edd2ae4e7e24ada915a21e2d5355bd"
       }
     }
   ],

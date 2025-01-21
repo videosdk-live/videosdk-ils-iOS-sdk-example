@@ -653,7 +653,7 @@ struct ParticipantListView: View {
                         
                         // Ellipsis button to show options
                         Menu {
-                            Button("Request as Host") {
+                            Button("Request to join as co-host") {
                                 // Set the requested participant's ID
                                 requestedParticipantId = participants[index].id
                                 sendHostRequest(participants[index]) // Trigger the host request action

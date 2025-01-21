@@ -26,7 +26,7 @@ struct InitialView: View {
                     .padding()
 
                 VStack(spacing: 16) {
-                    NavigationLink(destination: JoinLiveStreamView(streamId: "ryi4-osk6-auwe", name: "John Doe", role: "Create Room" )) {
+                    NavigationLink(destination: JoinLiveStreamView(streamId: "", name: "", role: "Create Room" )) {
                         ActionButtonn(title: "Create Live Stream", icon: "person.fill")
                     }
                     
@@ -34,11 +34,11 @@ struct InitialView: View {
                         .fontWeight(.medium)
                         .foregroundColor(.white)
                     
-                    NavigationLink(destination: JoinLiveStreamView(streamId: "ryi4-osk6-auwe", name: "Host User", role: "Host")) {
+                    NavigationLink(destination: JoinLiveStreamView(streamId: "", name: "", role: "Host")) {
                         ActionButtonn(title: "Join as Host", icon: "person.fill")
                     }
                     
-                    NavigationLink(destination: JoinLiveStreamView(streamId: "ryi4-osk6-auwe", name: "Audience User", role: "Audience")) {
+                    NavigationLink(destination: JoinLiveStreamView(streamId: "", name: "", role: "Audience")) {
                         ActionButtonn(title: "Join as Audience", icon: "person.fill")
                     }
                 }

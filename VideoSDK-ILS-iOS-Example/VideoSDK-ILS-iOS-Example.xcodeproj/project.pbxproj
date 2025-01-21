@@ -7,17 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2C6424652D3B6F6300DF35C8 /* MessageKit in Frameworks */ = {isa = PBXBuildFile; productRef = 2C6424642D3B6F6300DF35C8 /* MessageKit */; };
-		2C6424682D3B6F7300DF35C8 /* EmojiPicker in Frameworks */ = {isa = PBXBuildFile; productRef = 2C6424672D3B6F7300DF35C8 /* EmojiPicker */; };
-		2C6424F62D3B76B800DF35C8 /* VideoSDKRTCSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 2C6424F52D3B76B800DF35C8 /* VideoSDKRTCSwift */; };
-		E2F6D57274DB976D6DCE8E51 /* Pods_VideoSDK_ILS_iOS_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF1ADEF744543217EE2676DF /* Pods_VideoSDK_ILS_iOS_Example.framework */; };
+		2C9CBE8B2D3FFCF7006538EE /* VideoSDKRTCSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 2C9CBE8A2D3FFCF7006538EE /* VideoSDKRTCSwift */; };
+		2C9CBE8E2D3FFD02006538EE /* MessageKit in Frameworks */ = {isa = PBXBuildFile; productRef = 2C9CBE8D2D3FFD02006538EE /* MessageKit */; };
+		2C9CBE912D3FFD11006538EE /* EmojiPicker in Frameworks */ = {isa = PBXBuildFile; productRef = 2C9CBE902D3FFD11006538EE /* EmojiPicker */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		2C64244D2D3B6D6700DF35C8 /* VideoSDK-ILS-iOS-Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "VideoSDK-ILS-iOS-Example.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		997B7DD91A8215F801925ACA /* Pods-VideoSDK-ILS-iOS-Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VideoSDK-ILS-iOS-Example.release.xcconfig"; path = "Target Support Files/Pods-VideoSDK-ILS-iOS-Example/Pods-VideoSDK-ILS-iOS-Example.release.xcconfig"; sourceTree = "<group>"; };
 		BF1ADEF744543217EE2676DF /* Pods_VideoSDK_ILS_iOS_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VideoSDK_ILS_iOS_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		D7AF2464B7E12F8A22927DE5 /* Pods-VideoSDK-ILS-iOS-Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VideoSDK-ILS-iOS-Example.debug.xcconfig"; path = "Target Support Files/Pods-VideoSDK-ILS-iOS-Example/Pods-VideoSDK-ILS-iOS-Example.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -46,10 +43,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2C6424652D3B6F6300DF35C8 /* MessageKit in Frameworks */,
-				2C6424682D3B6F7300DF35C8 /* EmojiPicker in Frameworks */,
-				E2F6D57274DB976D6DCE8E51 /* Pods_VideoSDK_ILS_iOS_Example.framework in Frameworks */,
-				2C6424F62D3B76B800DF35C8 /* VideoSDKRTCSwift in Frameworks */,
+				2C9CBE8E2D3FFD02006538EE /* MessageKit in Frameworks */,
+				2C9CBE912D3FFD11006538EE /* EmojiPicker in Frameworks */,
+				2C9CBE8B2D3FFCF7006538EE /* VideoSDKRTCSwift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -61,7 +57,6 @@
 			children = (
 				2C64244F2D3B6D6700DF35C8 /* VideoSDK-ILS-iOS-Example */,
 				2C64244E2D3B6D6700DF35C8 /* Products */,
-				39C924F2652C5543C54B5DAD /* Pods */,
 				D836A2B04580CB57199F1340 /* Frameworks */,
 			);
 			sourceTree = "<group>";
@@ -72,15 +67,6 @@
 				2C64244D2D3B6D6700DF35C8 /* VideoSDK-ILS-iOS-Example.app */,
 			);
 			name = Products;
-			sourceTree = "<group>";
-		};
-		39C924F2652C5543C54B5DAD /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				D7AF2464B7E12F8A22927DE5 /* Pods-VideoSDK-ILS-iOS-Example.debug.xcconfig */,
-				997B7DD91A8215F801925ACA /* Pods-VideoSDK-ILS-iOS-Example.release.xcconfig */,
-			);
-			path = Pods;
 			sourceTree = "<group>";
 		};
 		D836A2B04580CB57199F1340 /* Frameworks */ = {
@@ -98,11 +84,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2C64245B2D3B6D6800DF35C8 /* Build configuration list for PBXNativeTarget "VideoSDK-ILS-iOS-Example" */;
 			buildPhases = (
-				72A155EE8B83833180DCB2BB /* [CP] Check Pods Manifest.lock */,
 				2C6424492D3B6D6700DF35C8 /* Sources */,
 				2C64244A2D3B6D6700DF35C8 /* Frameworks */,
 				2C64244B2D3B6D6700DF35C8 /* Resources */,
-				23AF085B5060648A897EE84D /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -113,9 +97,9 @@
 			);
 			name = "VideoSDK-ILS-iOS-Example";
 			packageProductDependencies = (
-				2C6424642D3B6F6300DF35C8 /* MessageKit */,
-				2C6424672D3B6F7300DF35C8 /* EmojiPicker */,
-				2C6424F52D3B76B800DF35C8 /* VideoSDKRTCSwift */,
+				2C9CBE8A2D3FFCF7006538EE /* VideoSDKRTCSwift */,
+				2C9CBE8D2D3FFD02006538EE /* MessageKit */,
+				2C9CBE902D3FFD11006538EE /* EmojiPicker */,
 			);
 			productName = "VideoSDK-ILS-iOS-Example";
 			productReference = 2C64244D2D3B6D6700DF35C8 /* VideoSDK-ILS-iOS-Example.app */;
@@ -146,9 +130,9 @@
 			mainGroup = 2C6424442D3B6D6700DF35C8;
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
-				2C6424632D3B6F6300DF35C8 /* XCRemoteSwiftPackageReference "MessageKit" */,
-				2C6424662D3B6F7300DF35C8 /* XCRemoteSwiftPackageReference "EmojiPicker" */,
-				2C6424F42D3B76B800DF35C8 /* XCRemoteSwiftPackageReference "videosdk-rtc-ios-spm" */,
+				2C9CBE892D3FFCF7006538EE /* XCRemoteSwiftPackageReference "videosdk-rtc-ios-spm" */,
+				2C9CBE8C2D3FFD02006538EE /* XCRemoteSwiftPackageReference "MessageKit" */,
+				2C9CBE8F2D3FFD11006538EE /* XCRemoteSwiftPackageReference "EmojiPicker" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 2C64244E2D3B6D6700DF35C8 /* Products */;
@@ -169,48 +153,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		23AF085B5060648A897EE84D /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-VideoSDK-ILS-iOS-Example/Pods-VideoSDK-ILS-iOS-Example-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-VideoSDK-ILS-iOS-Example/Pods-VideoSDK-ILS-iOS-Example-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-VideoSDK-ILS-iOS-Example/Pods-VideoSDK-ILS-iOS-Example-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		72A155EE8B83833180DCB2BB /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-VideoSDK-ILS-iOS-Example-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		2C6424492D3B6D6700DF35C8 /* Sources */ = {
@@ -344,7 +286,6 @@
 		};
 		2C64245C2D3B6D6800DF35C8 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = D7AF2464B7E12F8A22927DE5 /* Pods-VideoSDK-ILS-iOS-Example.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -379,7 +320,6 @@
 		};
 		2C64245D2D3B6D6800DF35C8 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 997B7DD91A8215F801925ACA /* Pods-VideoSDK-ILS-iOS-Example.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -436,23 +376,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		2C6424632D3B6F6300DF35C8 /* XCRemoteSwiftPackageReference "MessageKit" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/MessageKit/MessageKit";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 5.0.0;
-			};
-		};
-		2C6424662D3B6F7300DF35C8 /* XCRemoteSwiftPackageReference "EmojiPicker" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/Kelvas09/EmojiPicker.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 1.0.1;
-			};
-		};
-		2C6424F42D3B76B800DF35C8 /* XCRemoteSwiftPackageReference "videosdk-rtc-ios-spm" */ = {
+		2C9CBE892D3FFCF7006538EE /* XCRemoteSwiftPackageReference "videosdk-rtc-ios-spm" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/videosdk-live/videosdk-rtc-ios-spm";
 			requirement = {
@@ -460,23 +384,39 @@
 				kind = branch;
 			};
 		};
+		2C9CBE8C2D3FFD02006538EE /* XCRemoteSwiftPackageReference "MessageKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/MessageKit/MessageKit";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+		2C9CBE8F2D3FFD11006538EE /* XCRemoteSwiftPackageReference "EmojiPicker" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Kelvas09/EmojiPicker.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.1;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		2C6424642D3B6F6300DF35C8 /* MessageKit */ = {
+		2C9CBE8A2D3FFCF7006538EE /* VideoSDKRTCSwift */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 2C6424632D3B6F6300DF35C8 /* XCRemoteSwiftPackageReference "MessageKit" */;
+			package = 2C9CBE892D3FFCF7006538EE /* XCRemoteSwiftPackageReference "videosdk-rtc-ios-spm" */;
+			productName = VideoSDKRTCSwift;
+		};
+		2C9CBE8D2D3FFD02006538EE /* MessageKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2C9CBE8C2D3FFD02006538EE /* XCRemoteSwiftPackageReference "MessageKit" */;
 			productName = MessageKit;
 		};
-		2C6424672D3B6F7300DF35C8 /* EmojiPicker */ = {
+		2C9CBE902D3FFD11006538EE /* EmojiPicker */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 2C6424662D3B6F7300DF35C8 /* XCRemoteSwiftPackageReference "EmojiPicker" */;
+			package = 2C9CBE8F2D3FFD11006538EE /* XCRemoteSwiftPackageReference "EmojiPicker" */;
 			productName = EmojiPicker;
-		};
-		2C6424F52D3B76B800DF35C8 /* VideoSDKRTCSwift */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 2C6424F42D3B76B800DF35C8 /* XCRemoteSwiftPackageReference "videosdk-rtc-ios-spm" */;
-			productName = VideoSDKRTCSwift;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
