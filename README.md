@@ -156,8 +156,8 @@ The token is used to create and validate a meeting using API and also initialize
 
 ## 📖 Examples
 
-- [**iOS SDK Example**](https://github.com/videosdk-live/videosdk-ils-iOS-sdk-example)
 - [**React SDK Example**](https://github.com/videosdk-live/videosdk-ils-react-sdk-example)
+- [**React Native SDK Example**](https://github.com/videosdk-live/videosdk-ils-react-native-sdk-example)
 - [**Android Java SDK Example**](https://github.com/videosdk-live/videosdk-ils-android-sdk-example)
 
 ## 📝 Documentation
