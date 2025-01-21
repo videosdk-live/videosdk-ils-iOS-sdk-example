@@ -12,10 +12,9 @@ import VideoSDKRTC
 import AVFoundation
 
 struct JoinLiveStreamView: View {
-    @State var meetingId: String
+    @State var streamId: String
     @State var name: String
-    @State private var isMicEnabled: Bool = true
-    @State private var isFrontCamera: Bool = true
+    @State private var isMicEnabled: Bool = false
     @StateObject private var cameraPreview = CameraPreviewModel()
     @State private var showActionSheet = false
     @State private var audioDeviceList: [String] = []
@@ -32,8 +31,8 @@ struct JoinLiveStreamView: View {
     var role: String // "Create Room", "Host", or "Audience"
 
     
-    init(meetingId: String? = nil, name: String? = nil, role: String) {
-          self.meetingId = meetingId ?? ""
+    init(streamId: String? = nil, name: String? = nil, role: String) {
+          self.streamId = streamId ?? ""
           self.name = name ?? ""
           self.role = role
           // Set mode based on role
@@ -88,12 +87,17 @@ struct JoinLiveStreamView: View {
                                             HStack {
                                                 // Microphone Button
                                                 Button(action: {
-                                                }) {
-                                                    Image(systemName: isMicEnabled ? "mic.fill" : "mic.slash.fill")
-                                                        .foregroundColor(.white)
-                                                        .padding(11)
-                                                        .background(Circle().fill(Color.black.opacity(0.6)))
-                                                }
+                                                       if isMicEnabled {
+                                                           isMicEnabled = false
+                                                       } else {
+                                                           isMicEnabled = true
+                                                       }
+                                                   }) {
+                                                       Image(systemName: isMicEnabled ? "mic.fill" : "mic.slash.fill")
+                                                           .foregroundColor(.white)
+                                                           .padding(11)
+                                                           .background(Circle().fill(Color.black.opacity(0.6)))
+                                                   }
                                                 
                                                 // Camera Toggle Button
                                                 Button(action: {
@@ -129,10 +133,10 @@ struct JoinLiveStreamView: View {
 
                             if role != "Create Room" {
                                 
-                                // Meeting ID Field
+                                // Stream ID Field
                                 CustomTextField(
-                                    text: $meetingId,
-                                    placeholder: "Enter Meeting ID",
+                                    text: $streamId,
+                                    placeholder: "Enter Stream ID",
                                     systemImage: "number"
                                 )
                             }
@@ -156,19 +160,19 @@ struct JoinLiveStreamView: View {
                                     )
                                     .navigationBarBackButtonHidden(true)
                                 ) {
-                                    ActionButton(title: "Start Meeting", color: .indigo)
+                                    ActionButton(title: "Start Stream", color: .indigo)
                                 }
                             }
                             
-                            else if !meetingId.isEmpty {
+                            else if !streamId.isEmpty {
                                 NavigationLink(
                                     destination: LiveStreamView(
-                                        meetingId: meetingId,
+                                        streamId: streamId,
                                         userName: name.isEmpty ? "Guest" : name, mode: mode
                                     )
                                     .navigationBarBackButtonHidden(true)
                                 ) {
-                                    ActionButton(title: "Join Meeting", color: .indigo)
+                                    ActionButton(title: "Join Stream", color: .indigo)
                                 }
                             }
                       

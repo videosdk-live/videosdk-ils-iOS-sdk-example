@@ -1,11 +1,11 @@
 //
-//  RoomsStruct.swift
+//  RoomStruct.swift
 //  VideoSDK-ILS-iOS-Example
 //
 //  Created by Deep Bhupatkar on 18/01/25.
 //
 
-struct RoomsStruct: Codable {
+struct RoomStruct: Codable {
     let createdAt, updatedAt, roomID: String?
     let links: Links?
     let id: String?

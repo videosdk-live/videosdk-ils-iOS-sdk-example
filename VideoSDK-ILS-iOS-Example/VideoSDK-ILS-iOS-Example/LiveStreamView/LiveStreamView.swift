@@ -74,12 +74,11 @@ struct LiveStreamView: View {
     @Environment(\.presentationMode) var presentationMode
     @StateObject var liveStreamViewController: LiveStreamViewController
     
-    @State var meetingId: String?
+    @State var streamId: String?
     @State var userName: String?
     @State var isUnMute: Bool = true
     @State var camEnabled: Bool = true
 
-    
     // for actionsheet showing and changing selected device
     @State private var showActionSheet = false
     @State private var selectedAudioDevice: String?
@@ -103,8 +102,8 @@ struct LiveStreamView: View {
     // meeting mode for passing in argument
     @State private var currentMode: Mode // meeting mode
     
-    init(meetingId: String? = nil, userName: String? = nil, mode: Mode) {
-        self.meetingId = meetingId
+    init(streamId: String? = nil, userName: String? = nil, mode: Mode) {
+        self.streamId = streamId
         self.userName = userName
         self._currentMode = State(initialValue: mode)
         // Initialize the LiveStreamViewController using @StateObject
@@ -498,8 +497,8 @@ struct LiveStreamView: View {
         }
         .onAppear {
                     VideoSDK.config(token: liveStreamViewController.token)
-                    if let meetingId = meetingId, !meetingId.isEmpty {
-                        liveStreamViewController.joinMeeting(meetingId: meetingId, userName: userName!,mode: currentMode)
+                    if let streamId = streamId, !streamId.isEmpty {
+                        liveStreamViewController.joinStream(streamId: streamId, userName: userName!,mode: currentMode)
                     } else {
                         liveStreamViewController.joinRoom(userName: userName!,mode: currentMode)
                     }

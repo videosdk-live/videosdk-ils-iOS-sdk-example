@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import VideoSDKRTC
 
 struct InitialView: View {
     var body: some View {
@@ -16,7 +17,6 @@ struct InitialView: View {
                     .font(.largeTitle)
                     .fontWeight(.bold)
                     .foregroundColor(.white)
-                    
                 
                 Text("Interactive Live Streaming Example")
                     .font(.title)
@@ -26,19 +26,19 @@ struct InitialView: View {
                     .padding()
 
                 VStack(spacing: 16) {
-                    NavigationLink(destination: JoinLiveStreamView(meetingId: "ryi4-osk6-auwe", name: "John Doe", role: "Create Room" )) {
-                        ActionButtonn(title: "Create Meeting", icon: "person.fill")
+                    NavigationLink(destination: JoinLiveStreamView(streamId: "ryi4-osk6-auwe", name: "John Doe", role: "Create Room" )) {
+                        ActionButtonn(title: "Create Live Stream", icon: "person.fill")
                     }
                     
                     Text("---- OR ----")
                         .fontWeight(.medium)
                         .foregroundColor(.white)
                     
-                    NavigationLink(destination: JoinLiveStreamView(meetingId: "ryi4-osk6-auwe", name: "Host User", role: "Host")) {
+                    NavigationLink(destination: JoinLiveStreamView(streamId: "ryi4-osk6-auwe", name: "Host User", role: "Host")) {
                         ActionButtonn(title: "Join as Host", icon: "person.fill")
                     }
                     
-                    NavigationLink(destination: JoinLiveStreamView(meetingId: "ryi4-osk6-auwe", name: "Audience User", role: "Audience")) {
+                    NavigationLink(destination: JoinLiveStreamView(streamId: "ryi4-osk6-auwe", name: "Audience User", role: "Audience")) {
                         ActionButtonn(title: "Join as Audience", icon: "person.fill")
                     }
                 }

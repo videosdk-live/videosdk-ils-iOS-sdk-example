@@ -5,7 +5,6 @@
 //  Created by Deep Bhupatkar on 18/01/25.
 //
 
-
 import Foundation
 import VideoSDKRTC
 import WebRTC
@@ -24,7 +23,7 @@ class LiveStreamViewController: ObservableObject {
     @Published var meeting: Meeting? = nil
     @Published var localParticipantView: VideoView? = nil
     @Published var participants: [Participant] = []
-    @Published var meetingID: String = ""
+    @Published var streamID: String = ""
     @Published var participantVideoTracks: [String: RTCVideoTrack] = [:]
     @Published var participantMicStatus: [String: Bool] = [:]
     @Published var participantCameraStatus: [String: Bool] = [:]
@@ -36,29 +35,24 @@ class LiveStreamViewController: ObservableObject {
     @Published var alertMessage = ""
     @Published var showActionButtons = false
 
-    func initializeMeeting(meetingId: String, userName: String, mode: Mode) {
+    func initializeStream(streamId: String, userName: String, mode: Mode) {
         // Initialize the meeting
         var videoMediaTrack = try? VideoSDK.createCameraVideoTrack(
             encoderConfig: .h720p_w1280p,
             facingMode: .front,
             multiStream: false
         )
-        print("initializeMeeting Start")
-
         meeting = VideoSDK.initMeeting(
-            meetingId: meetingId,
+            meetingId: streamId,
             participantName: userName,
             micEnabled: true,
             webcamEnabled: true,
             customCameraVideoStream: videoMediaTrack,
             mode: mode
         )
-        print(mode)
         // Add event listeners and join the meeting
         meeting?.join()
         meeting?.addEventListener(self)
-      
-        print("initializeMeeting End")
 
     }
     
@@ -333,11 +327,11 @@ extension LiveStreamViewController {
             if let data = data, let utf8Text = String(data: data, encoding: .utf8)
             {
                 do{
-                    let dataArray = try JSONDecoder().decode(RoomsStruct.self,from: data)
+                    let dataArray = try JSONDecoder().decode(RoomStruct.self,from: data)
                     DispatchQueue.main.async {
                         print(dataArray.roomID)
-                        self.meetingID = dataArray.roomID!
-                        self.joinMeeting(meetingId: dataArray.roomID!, userName: userName, mode: mode)
+                        self.streamID = dataArray.roomID!
+                        self.joinStream(streamId: dataArray.roomID!, userName: userName, mode: mode)
                     }
                     print(dataArray)
                 } catch {
@@ -348,11 +342,11 @@ extension LiveStreamViewController {
         ).resume()
     }
     
-    func joinMeeting(meetingId: String, userName: String, mode: Mode) {
+    func joinStream(streamId: String, userName: String, mode: Mode) {
         if !token.isEmpty {
             // use provided token for the meeting
-            self.meetingID = meetingId
-            self.initializeMeeting(meetingId: meetingId, userName: userName, mode: mode)
+            self.streamID = streamId
+            self.initializeStream(streamId: streamId, userName: userName, mode: mode)
         }
         else {
             print("Auth token required")
