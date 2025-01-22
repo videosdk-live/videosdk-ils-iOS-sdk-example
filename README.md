@@ -121,9 +121,8 @@ Run App from Xcode. Please run the app in real device for better experience beca
 
 ### Result of Example:
 
-<p align="center">
-  <img width="500" src="assets/ios-ils-example-output.gif"/>
-</p>
+https://github.com/user-attachments/assets/2f8c0a10-54d7-4184-ae2b-a5d5e61152c6
+
 
 
 ## 🧠 Key Concepts
