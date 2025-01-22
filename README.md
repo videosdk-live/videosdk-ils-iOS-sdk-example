@@ -122,12 +122,8 @@ Run App from Xcode. Please run the app in real device for better experience beca
 ### Result of Example:
 
 <p align="center">
-  <video width="300" controls>
-    <source src="https://cdn.videosdk.live/website-resources/docs-resources/ios_ils_example_output.mp4" type="video/mp4">
-    Your browser does not support the video tag.
-  </video>
+  <img width="500" src="assets/ios-ils-example-output.gif"/>
 </p>
-
 
 
 ## 🧠 Key Concepts
