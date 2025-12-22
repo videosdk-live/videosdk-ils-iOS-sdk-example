@@ -10,15 +10,15 @@ import SwiftUI
 @main
 struct VideoSDK_ILS_iOS_ExampleApp: App {
     init() {
-           // Set the appearance globally
-           UITableView.appearance().backgroundColor = .black
-           UICollectionView.appearance().backgroundColor = .black
-           UIScrollView.appearance().backgroundColor = .black
-       }
+        // Set the appearance globally
+        UITableView.appearance().backgroundColor = .black
+        UICollectionView.appearance().backgroundColor = .black
+        UIScrollView.appearance().backgroundColor = .black
+    }
     var body: some Scene {
         WindowGroup {
             InitialView()
-                .environment(\.colorScheme, .dark) // Force dark mode
+                .environment(\.colorScheme, .dark)  // Force dark mode
         }
     }
 }

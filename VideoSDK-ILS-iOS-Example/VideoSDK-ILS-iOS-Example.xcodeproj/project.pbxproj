@@ -7,9 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2C9CBE8B2D3FFCF7006538EE /* VideoSDKRTCSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 2C9CBE8A2D3FFCF7006538EE /* VideoSDKRTCSwift */; };
 		2C9CBE8E2D3FFD02006538EE /* MessageKit in Frameworks */ = {isa = PBXBuildFile; productRef = 2C9CBE8D2D3FFD02006538EE /* MessageKit */; };
 		2C9CBE912D3FFD11006538EE /* EmojiPicker in Frameworks */ = {isa = PBXBuildFile; productRef = 2C9CBE902D3FFD11006538EE /* EmojiPicker */; };
+		844B0A8D2EF56B62006182E0 /* VideoSDKRTCSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 844B0A8C2EF56B62006182E0 /* VideoSDKRTCSwift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -45,7 +45,7 @@
 			files = (
 				2C9CBE8E2D3FFD02006538EE /* MessageKit in Frameworks */,
 				2C9CBE912D3FFD11006538EE /* EmojiPicker in Frameworks */,
-				2C9CBE8B2D3FFCF7006538EE /* VideoSDKRTCSwift in Frameworks */,
+				844B0A8D2EF56B62006182E0 /* VideoSDKRTCSwift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -97,9 +97,9 @@
 			);
 			name = "VideoSDK-ILS-iOS-Example";
 			packageProductDependencies = (
-				2C9CBE8A2D3FFCF7006538EE /* VideoSDKRTCSwift */,
 				2C9CBE8D2D3FFD02006538EE /* MessageKit */,
 				2C9CBE902D3FFD11006538EE /* EmojiPicker */,
+				844B0A8C2EF56B62006182E0 /* VideoSDKRTCSwift */,
 			);
 			productName = "VideoSDK-ILS-iOS-Example";
 			productReference = 2C64244D2D3B6D6700DF35C8 /* VideoSDK-ILS-iOS-Example.app */;
@@ -130,9 +130,9 @@
 			mainGroup = 2C6424442D3B6D6700DF35C8;
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
-				2C9CBE892D3FFCF7006538EE /* XCRemoteSwiftPackageReference "videosdk-rtc-ios-spm" */,
 				2C9CBE8C2D3FFD02006538EE /* XCRemoteSwiftPackageReference "MessageKit" */,
 				2C9CBE8F2D3FFD11006538EE /* XCRemoteSwiftPackageReference "EmojiPicker" */,
+				844B0A8B2EF56B62006182E0 /* XCRemoteSwiftPackageReference "videosdk-rtc-ios-spm" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 2C64244E2D3B6D6700DF35C8 /* Products */;
@@ -376,14 +376,6 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		2C9CBE892D3FFCF7006538EE /* XCRemoteSwiftPackageReference "videosdk-rtc-ios-spm" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/videosdk-live/videosdk-rtc-ios-spm";
-			requirement = {
-				branch = main;
-				kind = branch;
-			};
-		};
 		2C9CBE8C2D3FFD02006538EE /* XCRemoteSwiftPackageReference "MessageKit" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/MessageKit/MessageKit";
@@ -400,14 +392,17 @@
 				minimumVersion = 1.0.1;
 			};
 		};
+		844B0A8B2EF56B62006182E0 /* XCRemoteSwiftPackageReference "videosdk-rtc-ios-spm" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/videosdk-live/videosdk-rtc-ios-spm";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		2C9CBE8A2D3FFCF7006538EE /* VideoSDKRTCSwift */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 2C9CBE892D3FFCF7006538EE /* XCRemoteSwiftPackageReference "videosdk-rtc-ios-spm" */;
-			productName = VideoSDKRTCSwift;
-		};
 		2C9CBE8D2D3FFD02006538EE /* MessageKit */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 2C9CBE8C2D3FFD02006538EE /* XCRemoteSwiftPackageReference "MessageKit" */;
@@ -417,6 +412,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 2C9CBE8F2D3FFD11006538EE /* XCRemoteSwiftPackageReference "EmojiPicker" */;
 			productName = EmojiPicker;
+		};
+		844B0A8C2EF56B62006182E0 /* VideoSDKRTCSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 844B0A8B2EF56B62006182E0 /* XCRemoteSwiftPackageReference "videosdk-rtc-ios-spm" */;
+			productName = VideoSDKRTCSwift;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

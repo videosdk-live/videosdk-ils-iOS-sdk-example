@@ -6,7 +6,12 @@
 //
 
 import SwiftUI
-import VideoSDKRTC
+import VideoSDKRTCSwift
+
+enum UserRole: String {
+    case HOST = "Host"
+    case AUDIENCE = "Audience"
+}
 
 struct InitialView: View {
     var body: some View {
@@ -17,7 +22,7 @@ struct InitialView: View {
                     .font(.largeTitle)
                     .fontWeight(.bold)
                     .foregroundColor(.white)
-                
+
                 Text("Interactive Live Streaming Example")
                     .font(.title)
                     .fontWeight(.medium)
@@ -26,24 +31,35 @@ struct InitialView: View {
                     .padding()
 
                 VStack(spacing: 16) {
-                    NavigationLink(destination: JoinLiveStreamView(streamId: "", name: "", role: "Create Room" )) {
-                        ActionButtonn(title: "Create Live Stream", icon: "person.fill")
+                    NavigationLink(
+                        destination: JoinLiveStreamView(selectedRole: .HOST)
+                    ) {
+                        AppButton(
+                            title: "Create Live Stream",
+                        )
                     }
-                    
+
                     Text("---- OR ----")
                         .fontWeight(.medium)
                         .foregroundColor(.white)
-                    
-                    NavigationLink(destination: JoinLiveStreamView(streamId: "", name: "", role: "Host")) {
-                        ActionButtonn(title: "Join as Host", icon: "person.fill")
+
+                    NavigationLink(
+                        destination: JoinLiveStreamView(selectedRole: .HOST)
+                    ) {
+                        AppButton(
+                            title: "Join as Host",
+                        )
                     }
-                    
-                    NavigationLink(destination: JoinLiveStreamView(streamId: "", name: "", role: "Audience")) {
-                        ActionButtonn(title: "Join as Audience", icon: "person.fill")
+
+                    NavigationLink(
+                        destination: JoinLiveStreamView(selectedRole: .AUDIENCE)
+                    ) {
+                        AppButton(
+                            title: "Join as Audience",
+                        )
                     }
                 }
             }
-            .navigationBarBackButtonHidden(false)
         }
         .padding(.horizontal)
     }

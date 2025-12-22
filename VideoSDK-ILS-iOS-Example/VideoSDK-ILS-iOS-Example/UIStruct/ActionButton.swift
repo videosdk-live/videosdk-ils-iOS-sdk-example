@@ -5,12 +5,12 @@
 //  Created by Deep Bhupatkar on 18/01/25.
 //
 
-
 import SwiftUI
+
 struct ActionButton: View {
     let title: String
     let color: Color
-    
+
     var body: some View {
         HStack {
             Spacer()
@@ -28,13 +28,10 @@ struct ActionButton: View {
     }
 }
 
-
-
-
-struct ActionButtonn: View {
+struct AppButton: View {
     let title: String
-    let icon: String
-    
+    let icon: String = "person.fill"
+
     var body: some View {
         HStack {
             Image(systemName: icon)
@@ -50,4 +47,3 @@ struct ActionButtonn: View {
         .foregroundColor(.white)
     }
 }
-
