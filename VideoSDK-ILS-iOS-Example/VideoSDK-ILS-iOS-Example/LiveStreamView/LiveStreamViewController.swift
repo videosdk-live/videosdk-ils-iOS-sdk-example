@@ -99,9 +99,9 @@ class LiveStreamViewController: ObservableObject {
         let senderName = participants.first?.displayName ?? "Unknown"
         let senderId = participants.first?.id ?? "Unknown"
         let payload = [
-            "receiverId": "\(participant.id)",
-            "senderName": "\(senderName)",
-            "senderId": "\(senderId)",
+            "receiverId": participant.id,
+            "senderName": senderName,
+            "senderId": senderId,
         ]
         Task {
             do {
@@ -115,16 +115,12 @@ class LiveStreamViewController: ObservableObject {
                 print("Error while sending request to become host: \(error)")
             }
         }
-
     }
 
     func acceptHostChange() {
         let senderName = participants.first?.displayName ?? "Unknown"
         let recvID = requestFrom ?? "Unknown"
-        let payload = [
-            "receiverId": "\(recvID)",
-            "accpeterName": "\(senderName)",
-        ]
+        let payload = [ "receiverId": recvID, "accpeterName": senderName ]
         Task {
             await meeting?.changeMode(.SEND_AND_RECV)
             do {
@@ -144,11 +140,7 @@ class LiveStreamViewController: ObservableObject {
     func declineHostChange() {
         let senderName = participants.first?.displayName ?? "Unknown"
         let recvID = requestFrom ?? "Unknown"
-        let payload = [
-            "receiverId": "\(recvID)",
-            "accpeterName": "\(senderName)",
-        ]
-        print("declineHostChange \(payload)")
+        let payload = [ "receiverId": recvID, "accpeterName": senderName ]
         Task {
             do {
                 try await self.meeting?.pubsub.publish(
@@ -163,6 +155,7 @@ class LiveStreamViewController: ObservableObject {
         }
 
     }
+    
     // Add a method to open chat
     func openChat() {
         guard let meeting = self.meeting else { return }
@@ -393,11 +386,6 @@ extension LiveStreamViewController: PubSubMessageListener {
                                     "The request to become the host has been accepted by \(toPrintName)."
                                 self.showAlert = true
                                 self.showActionButtons = false
-                                Task {
-                                    await self.meeting?.changeMode(
-                                        .SEND_AND_RECV
-                                    )
-                                }
                             }
                         } else if message.message == "DECLINED" {
                             DispatchQueue.main.async {

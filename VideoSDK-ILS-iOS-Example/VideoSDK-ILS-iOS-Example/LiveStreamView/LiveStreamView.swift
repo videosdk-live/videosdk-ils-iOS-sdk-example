@@ -163,11 +163,6 @@ struct LiveStreamView: View {
             }
         }
     }
-    
-    // Define the closure to handle sending the host request
-    func sendHostRequest(participant: Participant) {
-        controller.sendTheHostRequest(participant)
-    }
 
     private func getVisibleParticipants() -> [Participant] {
         // Only show participants who are in SEND_AND_RECV mode
@@ -370,7 +365,7 @@ struct LiveStreamView: View {
                             .background(Color.blue)
                             .clipShape(RoundedRectangle(cornerRadius: 8))
                             .onTapGesture {
-                                showParticipantsList = true
+                                showParticipantsList = !isAudienceMode
                             }
                         }
 
@@ -676,7 +671,7 @@ struct LiveStreamView: View {
                 participantMicStatus: controller
                     .participantMicStatus,
                 onClose: { showParticipantsList = false },
-                sendHostRequest: sendHostRequest
+                sendHostRequest: controller.sendTheHostRequest
             )
         }
         .onChange(
@@ -813,13 +808,12 @@ struct ParticipantListView: View {
                             )
                             .frame(width: 30)
 
-                            // Ellipsis button to show options
+                            // Option button to show options
                             Menu {
                                 Button("Request to join as co-host") {
-                                    // Set the requested participant's ID
                                     requestedParticipantId =
                                         participants[index].id
-                                    sendHostRequest(participants[index])  // Trigger the host request action
+                                    sendHostRequest(participants[index])
                                     onClose()
                                 }
                             } label: {
