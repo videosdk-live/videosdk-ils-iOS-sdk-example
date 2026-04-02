@@ -31,6 +31,7 @@ class LiveStreamViewController: ObservableObject {
     @Published var alertTitle = ""
     @Published var alertMessage = ""
     @Published var showActionButtons = false
+    @Published var viewerParticipantCount: Int = 0
 
     @Published var isMicEnabled: Bool = true
     @Published var isCamEnabled: Bool = true
@@ -41,6 +42,7 @@ class LiveStreamViewController: ObservableObject {
         self.meetingMode = mode
 
         initialiseMeeting()
+
     }
 
     func initialiseMeeting() {
@@ -120,7 +122,7 @@ class LiveStreamViewController: ObservableObject {
     func acceptHostChange() {
         let senderName = participants.first?.displayName ?? "Unknown"
         let recvID = requestFrom ?? "Unknown"
-        let payload = [ "receiverId": recvID, "accpeterName": senderName ]
+        let payload = ["receiverId": recvID, "accpeterName": senderName]
         Task {
             await meeting?.changeMode(.SEND_AND_RECV)
             do {
@@ -140,7 +142,7 @@ class LiveStreamViewController: ObservableObject {
     func declineHostChange() {
         let senderName = participants.first?.displayName ?? "Unknown"
         let recvID = requestFrom ?? "Unknown"
-        let payload = [ "receiverId": recvID, "accpeterName": senderName ]
+        let payload = ["receiverId": recvID, "accpeterName": senderName]
         Task {
             do {
                 try await self.meeting?.pubsub.publish(
@@ -155,7 +157,7 @@ class LiveStreamViewController: ObservableObject {
         }
 
     }
-    
+
     // Add a method to open chat
     func openChat() {
         guard let meeting = self.meeting else { return }
@@ -171,7 +173,7 @@ class LiveStreamViewController: ObservableObject {
 
 // MARK: - MeetingEventListener
 extension LiveStreamViewController: MeetingEventListener {
-    
+
     func onMeetingJoined() {
         guard let localParticipant = self.meeting?.localParticipant else {
             return
@@ -180,6 +182,14 @@ extension LiveStreamViewController: MeetingEventListener {
         self.participants.append(localParticipant)
         // add event listener
         localParticipant.addEventListener(self)
+
+        if localParticipant.mode == .SEND_AND_RECV {
+            localParticipant.pin()
+        } else {
+            localParticipant.unpin()
+        }
+        viewerParticipantCount = 1
+
         Task {
             await meeting?.pubsub.subscribe(
                 topic: "REACTION",
@@ -202,6 +212,9 @@ extension LiveStreamViewController: MeetingEventListener {
         }
         // add listener
         participant.addEventListener(self)
+        viewerParticipantCount +=
+            meeting?.participants.values.count { $0.mode == .SIGNALLING_ONLY }
+            ?? 0
     }
 
     func onParticipantLeft(_ participant: Participant) {
@@ -225,7 +238,7 @@ extension LiveStreamViewController: MeetingEventListener {
         }
         participants.removeAll()
     }
-    
+
     func onMeetingStateChanged(meetingState: MeetingState) {
         switch meetingState {
 
@@ -240,18 +253,18 @@ extension LiveStreamViewController: MeetingEventListener {
 
     func onParticipantModeChanged(participantId: String, mode: VideoSDKRTC.Mode)
     {
-        print(
-            "Participant \(self.participants.first(where: { $0.id == participantId })?.displayName ?? "") mode changed to \(mode.rawValue)"
-        )
         let participant = self.participants.first { $0.id == participantId }
         if participant != nil {
             DispatchQueue.main.async {
-                // Update participant in the list
+                if participant?.mode == .SEND_AND_RECV {
+                    participant?.pin()
+                } else {
+                    participant?.unpin()
+                }
                 if let index = self.participants.firstIndex(where: {
                     $0.id == participant!.id
                 }) {
                     self.participants[index] = participant!
-
                     // If switching to RECV_ONLY, remove their video tracks and status
                     if participant!.mode == .RECV_ONLY {
                         self.participantVideoTracks.removeValue(
@@ -268,6 +281,16 @@ extension LiveStreamViewController: MeetingEventListener {
             }
         }
 
+    }
+
+    func onQualityLimitation(
+        type: VideoSDKRTC.QualityLimitationType,
+        state: VideoSDKRTC.QualityLimitationState,
+        timestamp: Int
+    ) {
+        print(
+            "Quality Limitation of \(type.rawValue) and status is: \(state.rawValue)"
+        )
     }
 }
 

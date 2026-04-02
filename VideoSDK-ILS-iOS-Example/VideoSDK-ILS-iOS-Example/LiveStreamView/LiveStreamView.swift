@@ -353,7 +353,7 @@ struct LiveStreamView: View {
                                     .font(.body)
                                     .foregroundColor(.white)
                                 Text(
-                                    "\(controller.participants.count)"
+                                    "\(controller.viewerParticipantCount)"
                                 )
                                 .font(.body)
                                 .fontWeight(.semibold)
