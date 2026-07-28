@@ -46,9 +46,6 @@ class ChatViewController: MessagesViewController {
         self.topic = topic
         self.metaData = metaData
 
-        let pubsubMessages = meeting.pubsub.getMessagesForTopic(topic)
-        messages = pubsubMessages.map({ Message(pubsubMessage: $0) })
-
         super.init(nibName: nil, bundle: nil)
     }
 

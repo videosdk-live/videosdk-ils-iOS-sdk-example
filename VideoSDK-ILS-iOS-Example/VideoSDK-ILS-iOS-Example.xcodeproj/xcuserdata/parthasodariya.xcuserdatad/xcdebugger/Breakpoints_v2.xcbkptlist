@@ -3,4 +3,52 @@
    uuid = "10634244-B12F-4DB9-A799-BA114FA62C06"
    type = "1"
    version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "82DDFE57-8DE5-4AB6-A538-B81E4007803D"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "VideoSDK-ILS-iOS-Example/JoinLiveStreamView/JoinLiveStreamView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "14"
+            endingLineNumber = "14"
+            landmarkName = "unknown"
+            landmarkType = "0">
+            <Locations>
+               <Location
+                  uuid = "82DDFE57-8DE5-4AB6-A538-B81E4007803D - af933a23836e7897"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "one-time initialization function for AUTH_TOKEN"
+                  moduleName = "VideoSDK-ILS-iOS-Example.debug.dylib"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/parthasodariya/Documents/Example/videosdk-ils-iOS-sdk-example/VideoSDK-ILS-iOS-Example/VideoSDK-ILS-iOS-Example/JoinLiveStreamView/JoinLiveStreamView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "14"
+                  endingLineNumber = "14">
+               </Location>
+               <Location
+                  uuid = "82DDFE57-8DE5-4AB6-A538-B81E4007803D - 587d6bffa5e6bc68"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "VideoSDK_ILS_iOS_Example.AUTH_TOKEN.unsafeMutableAddressor : Swift.String"
+                  moduleName = "VideoSDK-ILS-iOS-Example.debug.dylib"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/parthasodariya/Documents/Example/videosdk-ils-iOS-sdk-example/VideoSDK-ILS-iOS-Example/VideoSDK-ILS-iOS-Example/JoinLiveStreamView/JoinLiveStreamView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "14"
+                  endingLineNumber = "14">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
 </Bucket>

@@ -191,16 +191,39 @@ extension LiveStreamViewController: MeetingEventListener {
         viewerParticipantCount = 1
 
         Task {
-            await meeting?.pubsub.subscribe(
-                topic: "REACTION",
-                forListener: self
-            )
-            await meeting?.pubsub.subscribe(topic: "CHAT", forListener: self)
-            await meeting?.pubsub.subscribe(
-                topic: "HOSTREQUESTED",
-                forListener: self
-            )
-            await meeting?.pubsub.subscribe(topic: "ACK", forListener: self)
+            var subscriptionOptions = PubSubSubscribeOptions()
+            subscriptionOptions.realtimeOverflow = .drop
+            subscriptionOptions.maxQueue = nil
+            subscriptionOptions.oldMessageLimit = 50
+            
+            do {
+                try await meeting?.pubsub.subscribe(
+                    topic: "REACTION",
+                    forListener: self,
+                    options: subscriptionOptions
+                )
+                
+                subscriptionOptions.oldMessageLimit = 200
+                try await meeting?.pubsub.subscribe(
+                    topic: "CHAT",
+                    forListener: self,
+                    options: subscriptionOptions
+                )
+                
+                subscriptionOptions.oldMessageLimit = 50
+                subscriptionOptions.realtimeOverflow = .queue
+                subscriptionOptions.maxQueue = 100
+                
+                try await meeting?.pubsub.subscribe(
+                    topic: "HOSTREQUESTED",
+                    forListener: self,
+                    options: subscriptionOptions
+                )
+                
+                try await meeting?.pubsub.subscribe(topic: "ACK", forListener: self)
+            } catch {
+                print("Error while subscribing to pubsub: \(error.localizedDescription)")
+            }
         }
     }
 
@@ -225,16 +248,20 @@ extension LiveStreamViewController: MeetingEventListener {
         meeting?.localParticipant.removeEventListener(self)
         meeting?.removeEventListener(self)
         Task {
-            await meeting?.pubsub.unsubscribe(
-                topic: "REACTION",
-                forListener: self
-            )
-            await meeting?.pubsub.unsubscribe(topic: "CHAT", forListener: self)
-            await meeting?.pubsub.unsubscribe(
-                topic: "HOSTREQUESTED",
-                forListener: self
-            )
-            await meeting?.pubsub.unsubscribe(topic: "ACK", forListener: self)
+            do {
+                try await meeting?.pubsub.unsubscribe(
+                    topic: "REACTION",
+                    forListener: self
+                )
+                try await meeting?.pubsub.unsubscribe(topic: "CHAT", forListener: self)
+                try await meeting?.pubsub.unsubscribe(
+                    topic: "HOSTREQUESTED",
+                    forListener: self
+                )
+                try await meeting?.pubsub.unsubscribe(topic: "ACK", forListener: self)
+            } catch {
+                print("Error while unsubscribe: \(error.localizedDescription)")
+            }
         }
         participants.removeAll()
     }
@@ -348,6 +375,13 @@ extension LiveStreamViewController: ParticipantEventListener {
 
 // MARK: - PubSubMessageListener
 extension LiveStreamViewController: PubSubMessageListener {
+    
+    func onOldMessagesReceived(_ messages: [PubSubMessage], info: PubSubHistoryInfo) {
+        print("Old Messages Received:= \(messages.count) with isLast: \(info.isLast)")
+        messages.forEach { message in
+            onPubsubMessagGetPrint.shared.pubsubMessage = message
+        }
+    }
 
     func onMessageReceived(_ message: VideoSDKRTC.PubSubMessage) {
         print("Message Received:= " + message.message)
